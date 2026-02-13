@@ -183,13 +183,63 @@ export class ProjectGenerator {
     }
   }
 
-  private async enhanceProjectStructure(_options: ProjectGenerationOptions, projectPath: string): Promise<void> {
+  private async enhanceProjectStructure(options: ProjectGenerationOptions, projectPath: string): Promise<void> {
     logger.debug('Enhancing project structure...')
 
     // Setup git with proper .gitignore
     await this.setupGit(projectPath)
+    await this.applyTemplateFixes(options, projectPath)
 
     logger.debug('Project structure enhanced')
+  }
+
+  private async applyTemplateFixes(options: ProjectGenerationOptions, projectPath: string): Promise<void> {
+    if (options.template !== 'template-c1-next') {
+      return
+    }
+
+    const appDir = path.join(projectPath, 'src', 'app')
+    const pagePath = path.join(appDir, 'page.tsx')
+    const chatClientPath = path.join(appDir, 'c1-chat-client.tsx')
+
+    try {
+      await fs.promises.access(pagePath, fs.constants.F_OK)
+    } catch (error) {
+      logger.debug('No src/app/page.tsx found; skipping hydration fix for template-c1-next')
+      return
+    }
+
+    const chatClientContent = `"use client";
+
+import { C1Chat } from "@thesysai/genui-sdk";
+import "@crayonai/react-ui/styles/index.css";
+import { useEffect, useState } from "react";
+
+export default function C1ChatClient() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
+  return <C1Chat apiUrl="/api/chat" theme={{ mode: "dark" }} />;
+}
+`
+
+    const pageContent = `import C1ChatClient from "./c1-chat-client";
+
+export default function Home() {
+  return <C1ChatClient />;
+}
+`
+
+    await fs.promises.writeFile(chatClientPath, chatClientContent, 'utf8')
+    await fs.promises.writeFile(pagePath, pageContent, 'utf8')
+    logger.debug('Applied hydration mismatch fix for template-c1-next')
   }
 
   private async setupGit(projectPath: string): Promise<void> {
