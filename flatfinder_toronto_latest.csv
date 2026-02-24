@@ -1,0 +1,21 @@
+ID,Source,Title,Price,Bedrooms,Bathrooms,Type,Neighbourhood,Address,Utilities,Pets,TTC_Access,Available,URL,Description,Date_Scraped
+ECF7FE3C,Kijiji,"Bachelor Studio — Queen West, All-Inclusive",1150,Bachelor/Studio,1,Apartment,Queen West,,Yes,?,Streetcar,Immediately,https://www.kijiji.ca,"Bachelor, all utilities included, steps to 501 Queen.",2026-02-24
+4E5F5AC5,Zumper,"Studio — King St E, Laundry In Building",1295,Bachelor/Studio,1,Apartment,King East,,Check,No,Streetcar,Mar 1,https://www.zumper.com,"Modern studio, bike storage, TTC at door.",2026-02-24
+E138D5CF,Rentals.ca,"Bach — Annex, Heat & Water Included",975,Bachelor/Studio,1,Apartment,The Annex,11 Burnfield Ave,Partial,?,Subway,Mar 1,https://rentals.ca,"Ground level bach, heat & water incl, Bathurst Stn 10 min walk.",2026-02-24
+9F8D3E1A,Apartments.ca,Studio Loft — Liberty Village,1450,Bachelor/Studio,1,Loft,Liberty Village,,Check,Yes,Streetcar,Apr 1,https://www.apartments.ca,"Exposed brick, 12ft ceilings, cats & dogs welcome.",2026-02-24
+25701A9C,Kijiji,"1-Bed — Spadina & Bloor, Steps to Subway",1750,1-Bed,1,Apartment,Annex,83 Spadina Rd,Check,No,Subway,Mar 1,https://www.kijiji.ca,"Renovated 1BR, hardwood floors, Spadina Stn steps away.",2026-02-24
+71091FF1,Zumper,"1BR — Cabbagetown, Parking Included",1895,1-Bed,1,Apartment,Cabbagetown,,Check,Yes,Bus,Immediately,https://www.zumper.com,"Bright 1BR, parking spot, pet friendly building.",2026-02-24
+66C3F94A,PadMapper,"1-Bed Condo — Yonge & Eg, Gym/Pool",2100,1-Bed,1,Condo,Midtown,110 Charles St E,Check,?,Subway,Mar 15,https://www.padmapper.com,"Concierge, pool, gym, Bloor-Yonge Stn 5 min.",2026-02-24
+7EF61CEE,Rentals.ca,"1-Bed + Den — Etobicoke, Quiet Street",1650,1-Bed,1,Apartment,Etobicoke,2 Valhalla Inn Rd,Check,Yes,Bus,Apr 1,https://rentals.ca,"Spacious 1+den, pets ok, surface parking available.",2026-02-24
+862C133B,Apartments.ca,"1BR All-Incl — St. Clair West, Cozy",1550,1-Bed,1,Apartment,St. Clair West,1880 Winona Dr,Yes,No,Streetcar,Mar 1,https://www.apartments.ca,"All utilities included, steps to 512 St. Clair car.",2026-02-24
+8F19FF57,Craigslist,"1 bed near Ossington — clean, updated",1800,1-Bed,1,Apartment,West End,,Check,?,Subway,Immediately,https://toronto.craigslist.org,"Private landlord, no fees, Ossington Stn nearby.",2026-02-24
+7306BAF1,Kijiji,"2-Bed — Leslieville, Backyard, Parking",2400,2-Bed,1,House,Leslieville,,Check,Yes,Streetcar,May 1,https://www.kijiji.ca,"Main floor of house, backyard, 2 parking, cats & dogs ok.",2026-02-24
+0BEF358E,Zumper,"2BR Condo — Downtown Core, Furnished Opt.",2850,2-Bed,2,Condo,Downtown Core,,Check,No,Subway,Mar 1,https://www.zumper.com,"Furnished option available, high floor, city views.",2026-02-24
+7F58B062,Rentals.ca,"2-Bed — Scarborough, All-Incl, Pool",1975,2-Bed,1,Apartment,Scarborough,,Yes,?,Bus,Apr 1,https://rentals.ca,"All inclusive, outdoor pool, laundry in suite.",2026-02-24
+55FC31F0,PadMapper,"2-Bed Townhouse — East York, Private Entry",2200,2-Bed,1,Townhouse,East York,,Check,Yes,Bus,Mar 15,https://www.padmapper.com,"Private front entry, large backyard, dogs & cats welcome.",2026-02-24
+C236C0B9,Apartments.ca,"2BR — North York, Close to Finch Stn",2050,2-Bed,1,Apartment,North York,,Partial,No,Subway,Immediately,https://www.apartments.ca,"Heat incl, updated kitchen, Finch Stn 5 min bus.",2026-02-24
+5764222C,Kijiji,"3-Bed House — Danforth, Garage, Yard",3200,3-Bed,2,House,Danforth,,Check,Yes,Subway,May 1,https://www.kijiji.ca,"Full house, attached garage, pets welcome, Chester Stn nearby.",2026-02-24
+6502FFAE,Rentals.ca,"3BR — Etobicoke, Near Humber College",2650,3-Bed,2,Apartment,Etobicoke,,Partial,?,Bus,Sep 1,https://rentals.ca,"3 full bedrooms, 2 baths, laundry ensuite, near transit.",2026-02-24
+728403A8,Zumper,"3-Bed Condo — Yorkville, Luxury",5500,3-Bed,2,Condo,Yorkville,,Check,No,Subway,Apr 1,https://www.zumper.com,"Concierge, spa, 2 parking, luxury finishes, Bay Stn 2 min.",2026-02-24
+3066CFA9,Kijiji,"4-Bed House — Beaches, Large Yard",4200,4-Bed,2,House,The Beaches,,Check,Yes,Streetcar,Jul 1,https://www.kijiji.ca,"4 large bedrooms, wraparound porch, steps to the beach.",2026-02-24
+CE401123,Apartments.ca,"5-Bed — Scarborough, Student Friendly",3800,5-Bed,2,House,Scarborough,,Yes,No,Bus,Aug 1,https://www.apartments.ca,"All incl utilities, near UTSC & Centennial, no smoking.",2026-02-24
