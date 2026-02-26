@@ -96,6 +96,11 @@ dist/
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
 # Temporary folders
 tmp/
 temp/
