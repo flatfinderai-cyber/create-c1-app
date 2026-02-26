@@ -1,4 +1,7 @@
-requests==2.31.0
-beautifulsoup4==4.12.3
-lxml==5.2.1
-openpyxl==3.1.2
+browser-use>=0.11.13
+playwright>=1.40.0
+playwright-stealth>=1.0.6
+openpyxl>=3.1.2
+pydantic>=2.0.0
+langchain-anthropic>=0.3.0
+langchain-openai>=0.3.0

@@ -1,0 +1,54 @@
+name: FlatFinder Daily Scrape
+
+on:
+  schedule:
+    - cron: '17 6 * * *'   # 6:17 AM UTC daily (avoids :00 congestion)
+  workflow_dispatch:        # Allow manual runs
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        id: pw-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-pw-${{ hashFiles('requirements.txt') }}
+
+      - name: Install Playwright browsers and OS deps (cache miss)
+        if: steps.pw-cache.outputs.cache-hit != 'true'
+        run: playwright install --with-deps chromium
+
+      - name: Install Playwright OS deps only (cache hit)
+        if: steps.pw-cache.outputs.cache-hit == 'true'
+        run: playwright install-deps chromium
+
+      - name: Run scraper
+        env:
+          BROWSER_USE_API_KEY: ${{ secrets.BROWSER_USE_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python flatfinder_scraper.py
+
+      - name: Commit and push results
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add flatfinder_toronto.xlsx flatfinder_toronto_latest.csv
+          git commit -m "Daily scrape $(date -u +%Y-%m-%d)" && git push || true
