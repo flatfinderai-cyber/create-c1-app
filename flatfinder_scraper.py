@@ -17,6 +17,7 @@ from typing import Optional, List
 
 from pydantic import BaseModel
 from browser_use import Agent, Browser
+from browser_use.browser.session import BrowserSession
 from openpyxl import Workbook, load_workbook
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
@@ -149,11 +150,17 @@ def get_llm():
         from browser_use import ChatBrowserUse
         return ChatBrowserUse()
     elif os.getenv("ANTHROPIC_API_KEY"):
-        from langchain_anthropic import ChatAnthropic
-        return ChatAnthropic(model="claude-sonnet-4-6")
+        from browser_use.llm import ChatAnthropic
+        return ChatAnthropic(
+            model="claude-sonnet-4-6",
+            api_key=os.getenv("ANTHROPIC_API_KEY"),
+        )
     elif os.getenv("OPENAI_API_KEY"):
-        from langchain_openai import ChatOpenAI
-        return ChatOpenAI(model="gpt-4o-mini")
+        from browser_use.llm import ChatOpenAI
+        return ChatOpenAI(
+            model="gpt-4o-mini",
+            api_key=os.getenv("OPENAI_API_KEY"),
+        )
     else:
         raise ValueError(
             "No LLM API key found. Set one of:\n"
@@ -373,14 +380,26 @@ async def scrape_platform(platform: dict, llm) -> List[dict]:
     log.info(f"Starting {source}...")
 
     try:
-        browser = Browser(headless=True)
+        browser = BrowserSession(
+            headless=True,
+            user_agent=(
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/122.0.0.0 Safari/537.36"
+            ),
+            minimum_wait_page_load_time=1.5,
+            wait_for_network_idle_page_load_time=3.0,
+        )
         agent = Agent(
             task=task,
             llm=llm,
             browser=browser,
             output_model_schema=PlatformListings,
+            max_failures=3,
+            use_vision=True,
+            enable_planning=True,
         )
-        history = await agent.run(max_steps=25)
+        history = await agent.run(max_steps=30)
         result = history.final_result()
 
         raw_listings = parse_agent_result(result)
